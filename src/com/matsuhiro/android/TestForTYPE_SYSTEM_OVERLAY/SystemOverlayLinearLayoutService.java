@@ -46,55 +46,55 @@ public class SystemOverlayLinearLayoutService extends Service {
 		
 		mLayout = (SystemOverlayLinearLayout)mLinearLayout.findViewById(R.id.overlay);
 		
-		Button btn = (Button)mLayout.findViewById(R.id.overbutton);
-		btn.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				mCount = mCount+1;
-				TextView text = new TextView(mContext);
-				String string = "Clicked:"+mCount;
-				text.setText(string);
-				text.setLayoutParams(
-						new LinearLayout.LayoutParams(
-								LinearLayout.LayoutParams.WRAP_CONTENT,
-								LinearLayout.LayoutParams.WRAP_CONTENT));
-				mLayout.addView(text);
-				text.setOnClickListener(new View.OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						mLayout.removeView(v);
-						
-					}
-				});
-				
-			}
-		});
-		btn.setOnTouchListener(new View.OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				int action = event.getAction();
-				
-				if (action == MotionEvent.ACTION_DOWN) {
-					mTouchCount = mTouchCount+1;
-					ViewGroup.LayoutParams params = mLayout.getLayoutParams();
-					params.width = mWidth;
-					params.height = mHeight;
-					mLayout.setLayoutParams(params);
-					Log.v("SystemOverlay","down"+mTouchCount);
-				} else if (action == MotionEvent.ACTION_UP) {
-					mTouchCount = mTouchCount-1;
-					ViewGroup.LayoutParams params = mLayout.getLayoutParams();
-					params.width = ViewGroup.LayoutParams.WRAP_CONTENT;
-					params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-					mLayout.setLayoutParams(params);
-				}
-				Log.v("SystemOverlay","action="+action);
-				return false;
-			}
-		});
+//		Button btn = (Button)mLayout.findViewById(R.id.overbutton);
+//		btn.setOnClickListener(new View.OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				mCount = mCount+1;
+//				TextView text = new TextView(mContext);
+//				String string = "Clicked:"+mCount;
+//				text.setText(string);
+//				text.setLayoutParams(
+//						new LinearLayout.LayoutParams(
+//								LinearLayout.LayoutParams.WRAP_CONTENT,
+//								LinearLayout.LayoutParams.WRAP_CONTENT));
+//				mLayout.addView(text);
+//				text.setOnClickListener(new View.OnClickListener() {
+//					
+//					@Override
+//					public void onClick(View v) {
+//						mLayout.removeView(v);
+//						
+//					}
+//				});
+//				
+//			}
+//		});
+//		btn.setOnTouchListener(new View.OnTouchListener() {
+//			
+//			@Override
+//			public boolean onTouch(View v, MotionEvent event) {
+//				int action = event.getAction();
+//				
+//				if (action == MotionEvent.ACTION_DOWN) {
+//					mTouchCount = mTouchCount+1;
+//					ViewGroup.LayoutParams params = mLayout.getLayoutParams();
+//					params.width = mWidth;
+//					params.height = mHeight;
+//					mLayout.setLayoutParams(params);
+//					Log.v("SystemOverlay","down"+mTouchCount);
+//				} else if (action == MotionEvent.ACTION_UP) {
+//					mTouchCount = mTouchCount-1;
+//					ViewGroup.LayoutParams params = mLayout.getLayoutParams();
+//					params.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+//					params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+//					mLayout.setLayoutParams(params);
+//				}
+//				Log.v("SystemOverlay","action="+action);
+//				return false;
+//			}
+//		});
 		
 		mLayout.addWindow();
 	}
